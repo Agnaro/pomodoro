@@ -1,4 +1,4 @@
-<h2>{{ timerUI.display }}</h2>
+<h2>{{ timerUI.display | timerDisplay }}</h2>
 
 <button (click)="timerUI.onBtnStartClick($event)">Start</button>
 <button (click)="timerUI.onBtnPauseClick($event)">Pause</button>

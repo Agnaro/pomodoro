@@ -45,17 +45,16 @@ export class Timer {
   }
 
   public renderTimeChange(n: number) {
-    console.log(n);
     this.display = n;
   }
 
   public onBtnStartClick(evt: MouseEvent) {
-    console.log("start");
+    console.debug("start");
     this._btnStart$.next(ActionNames.Start);
   }
 
   public onBtnPauseClick(evt: MouseEvent) {
-    console.log("pause");
+    console.debug("pause");
     this._btnPause$.next(ActionNames.Pause);
   }
 }
