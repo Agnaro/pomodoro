@@ -1,4 +1,5 @@
 import { Observable, Subject } from "rxjs";
+import { debounce, debounceTime } from "rxjs/operators";
 
 export enum ActionNames {
   Start,
@@ -13,16 +14,16 @@ export interface TimerConfig {
 
 export class Timer {
   get btnStart$(): Observable<ActionNames> {
-    return this._btnStart$.asObservable();
+    return this._btnStart$.asObservable().pipe(debounceTime(10));
   }
   get btnPause$(): Observable<ActionNames> {
-    return this._btnPause$.asObservable();
+    return this._btnPause$.asObservable().pipe(debounceTime(10));
   }
   get btnReset$(): Observable<ActionNames> {
-    return this._btnReset$.asObservable();
+    return this._btnReset$.asObservable().pipe(debounceTime(10));
   }
   get btnBreak$(): Observable<ActionNames> {
-    return this._btnBreak$.asObservable();
+    return this._btnBreak$.asObservable().pipe(debounceTime(10));
   }
 
   public display: number;
@@ -34,7 +35,7 @@ export class Timer {
   private _btnBreak$ = new Subject<ActionNames>();
 
   constructor(config?: TimerConfig){
-    this.display = config?.initialSetTo || 0;
+    this.display = config?.initialSetTo || 10 * 60 * 1000;
 
     this.init();
   }
@@ -43,13 +44,18 @@ export class Timer {
     
   }
 
+  public renderTimeChange(n: number) {
+    console.log(n);
+    this.display = n;
+  }
+
   public onBtnStartClick(evt: MouseEvent) {
     console.log("start");
     this._btnStart$.next(ActionNames.Start);
   }
 
   public onBtnPauseClick(evt: MouseEvent) {
-    console.log("pausse");
+    console.log("pause");
     this._btnPause$.next(ActionNames.Pause);
   }
 }
