@@ -27,7 +27,7 @@ export class Timer {
   }
 
   public display: number;
-  public active: boolean;
+  public onBreak: boolean;
 
   private _btnStart$ = new Subject<ActionNames>();
   private _btnPause$ = new Subject<ActionNames>();
@@ -48,6 +48,10 @@ export class Timer {
     this.display = n;
   }
 
+  public renderOnBreak(onBreak: boolean) {
+    this.onBreak = onBreak;
+  }
+
   public onBtnStartClick(evt: MouseEvent) {
     console.debug("start");
     this._btnStart$.next(ActionNames.Start);
@@ -56,5 +60,15 @@ export class Timer {
   public onBtnPauseClick(evt: MouseEvent) {
     console.debug("pause");
     this._btnPause$.next(ActionNames.Pause);
+  }
+
+  public onBtnResetClick(evt: MouseEvent) {
+    console.debug("reset");
+    this._btnReset$.next(ActionNames.Reset);
+  }
+
+  public onBtnBreakClick(evt: MouseEvent) {
+    console.debug("break");
+    this._btnBreak$.next(ActionNames.Break);
   }
 }
