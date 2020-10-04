@@ -1,5 +1,5 @@
 import { Observable, Subject } from "rxjs";
-import { debounce, debounceTime } from "rxjs/operators";
+import { debounceTime } from "rxjs/operators";
 
 export enum ActionNames {
   Start,
@@ -34,15 +34,13 @@ export class Timer {
   private _btnReset$ = new Subject<ActionNames>();
   private _btnBreak$ = new Subject<ActionNames>();
 
-  constructor(config?: TimerConfig){
+  constructor(config?: TimerConfig) {
     this.display = config?.initialSetTo || 10 * 60 * 1000;
 
     this.init();
   }
 
-  private init(){
-    
-  }
+  private init() {}
 
   public renderTimeChange(n: number) {
     this.display = n;
