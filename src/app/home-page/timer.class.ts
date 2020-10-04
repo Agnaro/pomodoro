@@ -52,23 +52,19 @@ export class Timer {
     this.onBreak = onBreak;
   }
 
-  public onBtnStartClick(evt: MouseEvent) {
-    console.debug("start");
+  public onBtnStartClick() {
     this._btnStart$.next(ActionNames.Start);
   }
 
-  public onBtnPauseClick(evt: MouseEvent) {
-    console.debug("pause");
+  public onBtnPauseClick() {
     this._btnPause$.next(ActionNames.Pause);
   }
 
-  public onBtnResetClick(evt: MouseEvent) {
-    console.debug("reset");
+  public onBtnResetClick() {
     this._btnReset$.next(ActionNames.Reset);
   }
 
-  public onBtnBreakClick(evt: MouseEvent) {
-    console.debug("break");
+  public onBtnBreakClick() {
     this._btnBreak$.next(ActionNames.Break);
   }
 }

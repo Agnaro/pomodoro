@@ -1,7 +1,8 @@
-<h2>{{ timerUI.display | timerDisplay }}</h2>
-<p *ngIf="timerUI.onBreak">On Break</p>
+<h2>{{ time | timerDisplay }}</h2>
+<p *ngIf="!active">On Break</p>
+<p *ngIf="active">Work!</p>
 
-<button (click)="timerUI.onBtnStartClick($event)">Start</button>
-<button (click)="timerUI.onBtnPauseClick($event)">Pause</button>
-<button (click)="timerUI.onBtnResetClick($event)">Reset</button>
-<button (click)="timerUI.onBtnBreakClick($event)">Take Break</button>
+<button (click)="onBtnStartClick($event)">Start</button>
+<button (click)="onBtnPauseClick($event)">Pause</button>
+<button (click)="onBtnResetClick($event)">Reset</button>
+<button (click)="onBtnBreakClick($event)">Take Break</button>

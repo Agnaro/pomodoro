@@ -1,0 +1,8 @@
+<app-timer-page
+  [time]="timerUI.display"
+  [active]="!timerUI.onBreak"
+  (onStart)="timerUI.onBtnStartClick()"
+  (onPause)="timerUI.onBtnPauseClick()"
+  (onReset)="timerUI.onBtnResetClick()"
+  (onBreak)="timerUI.onBtnBreakClick()"
+  ></app-timer-page>
